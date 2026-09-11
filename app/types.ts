@@ -7,6 +7,8 @@ export type FormData = {
   lastName: string;
   email: string;
   birthDate: string;
+  username: string;
+  password: string;
 };
 
 export type LocalStorageFormData = Partial<FormData>;

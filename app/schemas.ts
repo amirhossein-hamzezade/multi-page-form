@@ -19,3 +19,18 @@ export const sectionTwoSchema = z.object({
     .min(1, "Birth date is required")
     .regex(dateRegex, "Please enter a valid date in dd/MM/yyyy format"),
 });
+
+export const sectionThreeSchema = z.object({
+  username: z
+    .string()
+    .min(3, "Username must be at least 3 characters long")
+    .regex(
+      /^[a-zA-Z0-9_]+$/,
+      "Username can only contain letters, numbers, and underscores",
+    ),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number"),
+});

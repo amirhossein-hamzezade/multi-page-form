@@ -1,5 +1,10 @@
 import React from "react";
+import SectionThree from "./SectionThree";
 
-export default function SectionThree() {
-  return <div>section Three</div>;
+export default function Page() {
+  return (
+    <div>
+      <SectionThree />
+    </div>
+  );
 }

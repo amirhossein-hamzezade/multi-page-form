@@ -32,7 +32,7 @@ export default function SectionOne() {
 
   useEffect(() => {
     if (serverResponse.success) {
-      localStorage.removeItem("sectionOneData");
+      // localStorage.removeItem("sectionOneData");
       router.push("/section-two");
     }
   }, [serverResponse.success, router]);

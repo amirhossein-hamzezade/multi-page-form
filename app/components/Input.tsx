@@ -15,6 +15,7 @@ type InputProps = {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
   defaultValue?: string;
+  rightElement?: React.ReactNode;
 };
 
 export default function Input({
@@ -31,33 +32,45 @@ export default function Input({
   value,
   onChange,
   disabled,
+  rightElement,
 }: InputProps) {
   return (
-    <div className="flex flex-col w-full  min-w-0">
-      <label htmlFor={id} className="text-[12px] font-medium">
+    <div className="flex flex-col w-full min-w-0">
+      <label htmlFor={id} className="text-[12px] font-medium mb-1">
         {label}
-        {description && <span className="block">{description}</span>}
-      </label>
-      <input
-        type={type}
-        id={id}
-        className={cn(
-          `bg-background border text-foreground border-border rounded-md min-w-2`,
-          { "border-red-400": errorMessage },
+        {description && (
+          <span className="block text-muted-foreground">{description}</span>
         )}
-        // required
-        min={min}
-        max={max}
-        aria-required={required}
-        pattern={pattern}
-        aria-label={label}
-        name={name}
-        value={value}
-        disabled={disabled}
-        onChange={onChange}
-      />
+      </label>
+
+      <div className="relative flex items-center w-full">
+        <input
+          type={type}
+          id={id}
+          className={cn(
+            `bg-background border text-foreground border-border rounded-md min-w-2 h-9 w-full px-3`,
+            { "border-red-400 focus:ring-red-400": errorMessage },
+            { "pr-10": rightElement },
+          )}
+          min={min}
+          max={max}
+          aria-required={required}
+          pattern={pattern}
+          aria-label={label}
+          name={name}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+        />
+        {rightElement && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center">
+            {rightElement}
+          </div>
+        )}
+      </div>
+
       {errorMessage && (
-        <label htmlFor={id}>
+        <label htmlFor={id} className="mt-1">
           <span className="text-xs text-red-400">{errorMessage}</span>
         </label>
       )}

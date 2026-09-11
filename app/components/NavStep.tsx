@@ -14,7 +14,7 @@ export default function NavStep() {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex flex-col border border-red-500 items-center justify-center gap-2 md:h-full md:w-50 ">
+    <div className="w-full flex flex-col border border-red-500 items-center justify-center  gap-25 md:gap-2 md:h-full md:w-50 ">
       <div className="w-full flex justify-start border border-gray-950 md:-mt-12">
         <Link
           href="#"
