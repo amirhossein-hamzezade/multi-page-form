@@ -14,17 +14,17 @@ export default function NavStep() {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex flex-col border border-red-500 items-center justify-center  gap-25 md:gap-2 md:h-full md:w-50 ">
-      <div className="w-full flex justify-start border border-gray-950 md:-mt-12">
+    <div className="w-full flex flex-col  items-center justify-center  gap-25 md:gap-2 md:h-full md:w-50 ">
+      <div className="w-full flex justify-start  md:-mt-12">
         <Link
           href="#"
-          className="mt-0.5 mr-auto flex justify-center items-center  border border-gray-900"
+          className="mt-0.5 mr-auto flex justify-center items-center  "
         >
           back
         </Link>
       </div>
       <div className=" w-full max-w-sm flex justify-center md:justify-end items-center md:h-117 ">
-        <div className="flex w-[75%] md:w-full items-center md:flex-col h-full justify-between border border-gray-600">
+        <div className="flex w-[75%] md:w-full items-center md:flex-col h-full justify-between ">
           {steps.map((step, i) => {
             return (
               <React.Fragment key={i}>
