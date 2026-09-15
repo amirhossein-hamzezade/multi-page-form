@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Form Wizard
 
-## Getting Started
+A clean, responsive **multi-step form** built with **Next.js 16 (App Router)**, **React 19**, and **Tailwind CSS v4**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Saves Progress Automatically**: If you type your name on step one and click through the wizard, your data stays saved in `localStorage`. If you refresh or move backward, your progress isn't lost.
+- **Modern React 19 Forms**: Uses the new `useActionState` hook alongside Next.js Server Actions to process form submissions smoothly on the server.
+- **Smart Server-Side Validation**: Built with **Zod**. It catches errors (like missing fields or poorly formatted emails) on the server side and feeds human-readable errors right back to the input fields.
+- **Accessible Custom Components**: Includes a custom calendar DatePicker built on top of **Radix UI** primitives and `react-day-picker`.
+- **Seamless Dark Mode**: Built with `next-themes` and Tailwind v4 CSS variables for a native-feeling dark and light mode toggle.
+
+---
+
+## 🏗️ Project Structure
+
+I used Next.js Route Groups `(form)` to keep the wizard steps organized under a shared navigation layout without messing up the clean URL structure.
+
+```text
+app/
+├── (form)/              # Multi-step layout folder
+│   ├── section-one/     # Step 1: Name and Last Name
+│   ├── section-two/     # Step 2: Email and Birthday (with custom calendar)
+│   ├── section-three/   # Step 3: Next step placeholder
+│   ├── section-overview/# Step 4: Summary view
+│   └── layout.tsx       # Sidebar navigation and container layout
+├── components/          # Reusable inputs, datepickers, and buttons
+├── providers/           # Global themes context
+└── schemas.ts           # Zod validation schemas for all steps
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+You will need **Node.js 18+** and **pnpm** installed.
 
-To learn more about Next.js, take a look at the following resources:
+### Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the project**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com
+   cd form-wizard
+   ```
 
-## Deploy on Vercel
+2. **Install the dependencies**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   pnpm install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Run the local development server**
+   ```bash
+   pnpm dev
+   ```
+   Now, open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 💡 What I Learned / Technical Highlights
+
+- **Handling Hydration Mismatches**: When reading form states from `localStorage` on initial page load, I structured the state initializers to safely return empty data on the server step and populate on the client side, avoiding annoying Next.js hydration errors.
+- **Cleaner Error Handling**: Instead of dealing with messy arrays from Zod validation, I used a clean JavaScript `.reduce()` block inside the server actions to map validation issues directly into key-value pairs matching the exact input field names.
