@@ -59,10 +59,3 @@ You will need **Node.js 18+** and **pnpm** installed.
    pnpm dev
    ```
    Now, open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 💡 What I Learned / Technical Highlights
-
-- **Handling Hydration Mismatches**: When reading form states from `localStorage` on initial page load, I structured the state initializers to safely return empty data on the server step and populate on the client side, avoiding annoying Next.js hydration errors.
-- **Cleaner Error Handling**: Instead of dealing with messy arrays from Zod validation, I used a clean JavaScript `.reduce()` block inside the server actions to map validation issues directly into key-value pairs matching the exact input field names.
