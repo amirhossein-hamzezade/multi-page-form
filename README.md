@@ -44,7 +44,7 @@ You will need **Node.js 18+** and **pnpm** installed.
 1. **Clone the project**
 
    ```bash
-   git clone https://github.com/somthing/multi-page-form.git
+   git clone https://github.com/amirhossein-hamzezade/multi-page-form.git
    cd multi-page-form
    ```
 
